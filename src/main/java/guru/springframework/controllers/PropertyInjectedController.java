@@ -14,7 +14,10 @@ import org.springframework.stereotype.Controller;
 public class PropertyInjectedController {
 
     @Autowired
-    //this works through reflections: spring sees that the property name is one of a bean and qualifies it automatically
+    //this works through reflections: spring sees that the property name is one of a bean
+    // and qualifies it automatically. it works like this unless there's a primary bean,
+    // in that case the primary bean will be autowired
+    @Qualifier("greetingServiceImpl")
     public GreetingService greetingServiceImpl;
 
     public String sayHello(){
